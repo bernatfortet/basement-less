@@ -97,6 +97,7 @@
 		.ignorecase{ text-transform:none;}
 		.tcenter{ text-align:center;}
 		.hyphen{ -hyphens: auto; -moz-hyphens: auto; -webkit-hyphens: auto;}
+		.valign{ .rel; top:50%; .trans(translateY(-50%)); }
 
 		// Font stacks
 		@serif: "Georgia", Cambria, "Times New Roman", Times, serif;
@@ -199,7 +200,8 @@
 		.icon-16{ width:16px; height:16px; overflow:hidden; display:inline-block; vertical-align:top; background-image:url("../images/sprite.png"); background-repeat: no-repeat; text-indent:-9999px;}
 
 		/*== TRANSITIONS ==*/
-		.anim( @speed: 100ms, @property: all, @function: linear ){
+
+		.anim(@speed: 100ms, @property: all, @function: linear ){
 			-webkit-transition-property:@property;   -webkit-transition-duration: @speed;    -webkit-transition-timing-function: @function;
 		 	   -moz-transition-property:@property;      -moz-transition-duration: @speed;       -moz-transition-timing-function: @function;
 		 	    -ms-transition-property:@property;       -ms-transition-duration: @speed;        -ms-transition-timing-function: @function;
