@@ -1,4 +1,4 @@
-@import "reset.less";
+@import "normalize.less";
 
 //  @GlobalConfig
 
@@ -97,7 +97,6 @@
 		.ignorecase{ text-transform:none;}
 		.tcenter{ text-align:center;}
 		.hyphen{ -hyphens: auto; -moz-hyphens: auto; -webkit-hyphens: auto;}
-		.valign{ .rel; top:50%; .trans(translateY(-50%)); }
 
 		// Font stacks
 		@serif: "Georgia", Cambria, "Times New Roman", Times, serif;
@@ -118,6 +117,16 @@
 				 -o-transform: @params;
 				    transform: @params;
 		}
+
+		//Transform Origin
+		.trans-origin(@params){
+			-webkit-transform-origin: @params;
+			   -moz-transform-origin: @params;
+				-ms-transform-origin: @params;
+				 -o-transform-origin: @params;
+				    transform-origin: @params;
+		}
+
 		//Opacity
 		.op( @fade:0.5 ){ @fadePercent: @fade*100;
 			-webkit-opacity: @fade;
@@ -200,13 +209,20 @@
 		.icon-16{ width:16px; height:16px; overflow:hidden; display:inline-block; vertical-align:top; background-image:url("../images/sprite.png"); background-repeat: no-repeat; text-indent:-9999px;}
 
 		/*== TRANSITIONS ==*/
+		.anim(@speed: 100ms, @speedHover: 0ms, @function: linear){
+			-webkit-transition-property:all;   -webkit-transition-duration: @speed;    -webkit-transition-timing-function: @function;
+		 	   -moz-transition-property:all;      -moz-transition-duration: @speed;       -moz-transition-timing-function: @function;
+		 	    -ms-transition-property:all;       -ms-transition-duration: @speed;        -ms-transition-timing-function: @function;
+		 	     -o-transition-property:all;        -o-transition-duration: @speed;         -o-transition-timing-function: @function;
+		 	        transition-property:all;           transition-duration: @speed;            transition-timing-function: @function;
 
-		.anim(@speed: 100ms, @property: all, @function: linear ){
-			-webkit-transition-property:@property;   -webkit-transition-duration: @speed;    -webkit-transition-timing-function: @function;
-		 	   -moz-transition-property:@property;      -moz-transition-duration: @speed;       -moz-transition-timing-function: @function;
-		 	    -ms-transition-property:@property;       -ms-transition-duration: @speed;        -ms-transition-timing-function: @function;
-		 	     -o-transition-property:@property;        -o-transition-duration: @speed;         -o-transition-timing-function: @function;
-		 	        transition-property:@property;           transition-duration: @speed;            transition-timing-function: @function;
+			&:hover{
+				-webkit-transition-property:all; -webkit-transition-duration: @speed+@speedHover+50; -webkit-transition-timing-function: @function;
+				   -moz-transition-property:all; -webkit-transition-duration: @speed+@speedHover+50; -webkit-transition-timing-function: @function;
+					-ms-transition-property:all;     -ms-transition-duration: @speed+@speedHover+50;     -ms-transition-timing-function: @function;
+					 -o-transition-property:all;      -o-transition-duration: @speed+@speedHover+50;      -o-transition-timing-function: @function;
+						transition-property:all;         transition-duration: @speed+@speedHover+50;         transition-timing-function: @function;
+			}
 		}
 		
 	//Clearfix
